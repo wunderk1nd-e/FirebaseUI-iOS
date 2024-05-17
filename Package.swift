@@ -39,10 +39,6 @@ let package = Package(
       targets: ["FirebaseEmailAuthUI"]
     ),
     .library(
-      name: "FirebaseFacebookAuthUI",
-      targets: ["FirebaseFacebookAuthUI"]
-    ),
-    .library(
       name: "FirebaseFirestoreUI",
       targets: ["FirebaseFirestoreUI"]
     ),
@@ -64,11 +60,6 @@ let package = Package(
     ),
   ],
   dependencies: [
-    .package(
-      name: "Facebook", 
-      url: "https://github.com/facebook/facebook-ios-sdk.git",
-      "11.0.0"..<"17.0.0"
-    ),
     .package(
       name: "Firebase", 
       url: "https://github.com/firebase/firebase-ios-sdk.git",
@@ -142,24 +133,6 @@ let package = Package(
       exclude: ["Info.plist"],
       resources: [
         .process("Resources"),
-      ],
-      publicHeadersPath: "Public",
-      cSettings: [
-        .headerSearchPath("../../"),
-      ]
-    ),
-    .target(
-      name: "FirebaseFacebookAuthUI",
-      dependencies: [
-        "FirebaseAuthUI",
-        .product(name: "FacebookLogin", package: "Facebook"),
-        .product(name: "FacebookCore", package: "Facebook"),
-      ],
-      path: "FirebaseFacebookAuthUI/Sources",
-      exclude: ["Info.plist"],
-      resources: [
-        .process("Resources"),
-        .process("Strings"),
       ],
       publicHeadersPath: "Public",
       cSettings: [
